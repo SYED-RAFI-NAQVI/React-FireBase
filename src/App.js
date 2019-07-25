@@ -6,7 +6,7 @@ import './App.css';
 function App () {
   const [state, setState] = useState({
     name : '',
-    isToggleOn : true,
+    isToggleOn : false,
   });
   
 
@@ -14,15 +14,23 @@ function App () {
     setState(
       {
         name:e.target.value,
-        isToggleOn : true,
+        isToggleOn : false,
       }
     )
   }
+  let show = null
+
+if(state.isToggleOn === false) {
+  show = (
+  <p>{state.name}</p>
+  )
+}
   
 // Toggling button 
 const buttonHandler = (e) => {
   e.preventDefault();
   setState(state => ({
+    name: state.name,
     isToggleOn: !state.isToggleOn
   }));
 }
@@ -33,9 +41,7 @@ const buttonHandler = (e) => {
         <h1>FireBase</h1>
         <input className = "int" onChange = {inputHandler}/>
         <button className = "btn" onClick = {buttonHandler}>submit</button>
-        { 
-         state.isToggleOn === true ? <p>{state.name}</p> : null
-        }
+        {show}
       </header>
     </div>
   );
