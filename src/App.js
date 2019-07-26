@@ -5,25 +5,22 @@ import './App.css';
 
 function App () {
   const [state, setState] = useState({
-    name : '',
+    names : [{name: 'rafi', age: 20}, {name: 'vikranth', age: 21 }],
   });
   
 
   const inputHandler = (e) => {
     setState(
       {
-        name:e.target.value,
+        names:e.target.value,
       }
     )
   }
 
   
-// Toggling button 
+// clickToCreateElements
 const buttonHandler = (e) => {
   e.preventDefault();
-  setState(state => ({
-    name: state.name,
-  }));
 }
 
   return (
@@ -32,7 +29,11 @@ const buttonHandler = (e) => {
         <h1>FireBase</h1>
         <input className = "int" onChange = {inputHandler}/>
         <button className = "btn" onClick = {buttonHandler}>submit</button>
-        <p>{state.name}</p>
+        <p>{state.names}</p>
+        {/* {
+          state.names.map((name, index) => ({
+          }))
+        } */}
       </header>
     </div>
   );
